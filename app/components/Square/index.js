@@ -16,7 +16,7 @@ function Square(props) {
 }
 
 Square.propTypes = {
-  id: React.PropTypes.number,
+  id: React.PropTypes.string,
 };
 
 export default Square;
