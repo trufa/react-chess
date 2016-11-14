@@ -1,7 +1,7 @@
 import { includes } from 'lodash/collection';
 import { range } from 'lodash/util';
 
-const notValidSquares = [
+const invalidSquares = [
   ...range(0, 20),
   ...range(20, 91, 10),
   ...range(29, 100, 10),
@@ -9,5 +9,5 @@ const notValidSquares = [
 ];
 
 export default function isValidSquare(id) {
-  return !includes(notValidSquares, id);
+  return !includes(invalidSquares, id);
 }
