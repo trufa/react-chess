@@ -11,7 +11,6 @@ import Board from 'components/Board';
 import { loadBoardArray } from './actions';
 import { createStructuredSelector } from 'reselect';
 
-
 export class Game extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.loadBoardArray();
