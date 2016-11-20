@@ -15,11 +15,11 @@ function Board(props) {
   const ranksArray = chunk(props.boardArray.toArray(), 10);
   const board = ranksArray.map((rank, i) => {
     const rankIndex = i;
-    const squareArray = rank.map((square, j) => {
+    const squareArray = rank.map((squareContent, j) => {
       const squareIndex = ((rankIndex * 10) + j);
-      const piece = isPiece(square) ? <Piece pieceId={square} square={squareIndex} /> : null;
+      const piece = isPiece(squareContent) ? <Piece pieceId={squareContent} /> : null;
       return (
-        <Square indexAndId={`${squareIndex} - ${square}`} id={square} index={squareIndex} key={`${squareIndex} - ${square}`} >
+        <Square squareContent={squareContent} squareIndex={squareIndex} key={`square-${squareIndex}`} >
           {piece}
         </Square>
       );
