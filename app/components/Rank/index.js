@@ -15,7 +15,7 @@ function Rank(props) {
 }
 
 Rank.propTypes = {
-  children: React.PropTypes.element.isRequired,
+  children: React.PropTypes.array,
 };
 
 export default Rank;
