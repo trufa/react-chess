@@ -7,8 +7,9 @@
 import React from 'react';
 import Square from 'components/Square';
 import Rank from 'components/Rank';
+import Piece from 'components/Piece';
 import { chunk } from 'lodash/array';
-
+import { isPiece } from 'gameUtils/pieces';
 
 function Board(props) {
   const ranksArray = chunk(props.boardArray.toArray(), 10);
@@ -16,7 +17,12 @@ function Board(props) {
     const rankIndex = i;
     const squareArray = rank.map((square, j) => {
       const squareIndex = ((rankIndex * 10) + j);
-      return <Square indexAndId={`${squareIndex} - ${square}`} id={square} index={squareIndex} key={`${squareIndex} - ${square}`} />;
+      const piece = isPiece(square) ? <Piece pieceId={square} square={squareIndex} /> : null;
+      return (
+        <Square indexAndId={`${squareIndex} - ${square}`} id={square} index={squareIndex} key={`${squareIndex} - ${square}`} >
+          {piece}
+        </Square>
+      );
     });
     return <Rank key={`rank-${i}`}>{squareArray}</Rank>;
   });
