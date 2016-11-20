@@ -6,17 +6,21 @@
 
 import React from 'react';
 import StyledSquare from './styledSquare';
+import isValidSquare from 'rules/validSquareCalculator';
+import { showIdAndIndexString } from 'debug/debugOptions';
 
 function Square(props) {
+  const isValid = isValidSquare(props.index);
   return (
-    <StyledSquare>
-      {props.id}
+    <StyledSquare isValid={isValid} >
+      {showIdAndIndexString ? props.indexAndId : null}
     </StyledSquare>
   );
 }
 
 Square.propTypes = {
-  id: React.PropTypes.string,
+  indexAndId: React.PropTypes.string,
+  index: React.PropTypes.number,
 };
 
 export default Square;

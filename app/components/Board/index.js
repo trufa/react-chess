@@ -1,23 +1,28 @@
 /**
-*
-* Board
-*
-*/
+ *
+ * Board
+ *
+ */
 
 import React from 'react';
 import Square from 'components/Square';
+import Rank from 'components/Rank';
+import { chunk } from 'lodash/array';
+
 
 function Board(props) {
-  const squareComponents = props.boardArray.map((item, index) => {
-    const sq = [<Square id={`${index} - ${item}`} key={index} />];
-    if ((index + 1) % 10 === 0) {
-      sq.push(<br />);
-    }
-    return sq;
+  const ranksArray = chunk(props.boardArray.toArray(), 10);
+  const board = ranksArray.map((rank, i) => {
+    const rankIndex = i;
+    const squareArray = rank.map((square, j) => {
+      const squareIndex = ((rankIndex * 10) + j);
+      return <Square indexAndId={`${squareIndex} - ${square}`} id={square} index={squareIndex} key={`${squareIndex} - ${square}`} />;
+    });
+    return <Rank key={`rank-${i}`}>{squareArray}</Rank>;
   });
   return (
     <div>
-      {squareComponents}
+      {board}
     </div>
   );
 }

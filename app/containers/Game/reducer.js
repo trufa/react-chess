@@ -8,6 +8,7 @@ import { fromJS } from 'immutable';
 import {
   LOAD_BOARD_ARRAY,
 } from './constants';
+import isValidSquare from 'rules/validSquareCalculator';
 
 // TODO: be able to flip board
 function fillInitialBoardArray() {
@@ -25,7 +26,7 @@ function fillInitialBoardArray() {
     } else if ((i >= 91) && (i <= 98)) { // Black's pawn rank
       boardArray[i] = reversedBackRank[i - 91];
     } else {
-      boardArray[i] = 99;
+      boardArray[i] = isValidSquare(i) ? 0 : 99; // 0 is empty, 99 is invalid
     }
   }
   return boardArray;
