@@ -7,7 +7,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import selectGame from './selectors';
-import Board from 'components/Board';
+import Board from 'containers/Board';
 import { loadBoardArray } from './actions';
 import { createStructuredSelector } from 'reselect';
 

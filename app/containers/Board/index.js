@@ -19,7 +19,7 @@ function Board(props) {
       const squareIndex = ((rankIndex * 10) + j);
       const piece = isPiece(squareContent) ? <Piece pieceId={squareContent} /> : null;
       return (
-        <Square squareContent={squareContent} squareIndex={squareIndex} key={`square-${squareIndex}`} >
+        <Square squareContent={squareContent} squareIndex={squareIndex} key={`square-${squareIndex}`} onClick={console.log("click")} >
           {piece}
         </Square>
       );
