@@ -28,13 +28,13 @@ const pieces = {
 };
 
 const getPieceInfoById = (id) => {
-  let prefix = Object.hasOwnProperty.call(pieces, id) ? 'white_' : null;
-  prefix = Object.hasOwnProperty.call(pieces, Math.abs(id)) ? 'black_' : prefix;
+  let prefix = Object.hasOwnProperty.call(pieces, id) ? 'w_' : null;
+  prefix = !prefix && Object.hasOwnProperty.call(pieces, Math.abs(id)) ? 'b_' : prefix;
   if (!prefix) throw new Error('Invalid piece id');
 
   return {
-    name: prefix + pieces[id].name,
-    imgPath: prefix + pieces[id].imgPath,
+    name: prefix + pieces[Math.abs(id)].name,
+    imgPath: prefix + pieces[Math.abs(id)].imgPath,
   };
 };
 
